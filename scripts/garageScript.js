@@ -21,5 +21,22 @@ var addCar = function( year, make, model, picURL, description ){
 
 var showCars = function(){
   console.log( 'in showCars');
-  console.log( myCars );
+  // upated from ver 0.2 to output an unordered list of cars in garage to DOM
+  // not just a cheesy console.log...
+  // empty the ul
+  document.getElementById( 'carsList' ).innerHTML='';
+  // for every car in the array...
+  for( var i=0; i< myCars.length; i++ ){
+    // assemble an output text line
+    var outputText = myCars[ i ].year + ' ' + myCars[ i ].make + ' ' + myCars[ i ].model + ': ' + myCars[ i ].description;
+    // create new list item
+    var newListItem = document.createElement( 'li' );
+    // create new text node with the output text
+    var newTextNode = document.createTextNode( outputText );
+    // append text node to list item
+    newListItem.appendChild( newTextNode );
+    // append new list item to existing ul
+    document.getElementById( 'carsList' ).appendChild( newListItem );
+  }; // end for
+
 }; // end showCars
