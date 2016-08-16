@@ -1,0 +1,34 @@
+a {
+  color: #912F40;
+  font-family: helvetica;
+}
+body {
+    background-color: #FFFFFA;
+}
+div {
+  font-family: helvetica;
+  margin-left: 3%;
+}
+
+h1 {
+  color: #702632;
+  font-family: arial;
+  margin-left: 3%;
+}
+
+h2 {
+  color: #702632;
+  font-family: arial;
+  margin-left: 3%;
+}
+
+h3 {
+  color: #702632;
+  font-family: arial;
+  margin-left: 3%;
+}
+
+p {
+  color: #080705;
+  font-family: courier;
+}
