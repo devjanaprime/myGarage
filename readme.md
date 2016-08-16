@@ -66,3 +66,5 @@ Versions by branch:
 -------------------
 * builds off of 0.8
 * Mongo CRUD for persistent car data
+
+![technologies by version](myGarage.png)
