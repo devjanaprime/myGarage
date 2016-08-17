@@ -71,8 +71,8 @@ all numbered items have their own branch in the following
 -------------------
 * builds off of 0.8
 * Mongo CRUD for persistent car data
-* 0.91 - remove a car
-* 0.92 - edit existing car
+* 1.01 - remove a car
+* 1.02 - edit existing car
 
 The Car Object
 --------------
