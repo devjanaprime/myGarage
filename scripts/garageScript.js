@@ -24,6 +24,16 @@ $( document ).ready( function(){
     showCars();
   }); // end addCarButton click
 
+  // click for all of 'removeCar' class
+  $(document).on('click', '.removeCar', function(){
+    console.log( 'in removeCar class click' );
+    // get index of selected car
+    var index = $(this).attr( 'carIndex' );
+    console.log( 'removing car:', myCars[ index ]);
+    myCars.splice( index, 1 );
+    showCars();
+  });
+
   var showCars = function(){
     console.log( 'in showCars');
     // upated from ver 0.2 to output an unordered list of cars in garage to DOM
@@ -34,14 +44,10 @@ $( document ).ready( function(){
     for( var i=0; i< myCars.length; i++ ){
       // assemble an output text line
       var outputText = myCars[ i ].year + ' ' + myCars[ i ].make + ' ' + myCars[ i ].model + ': ' + myCars[ i ].description;
-      // create new list item
-      var newListItem = document.createElement( 'li' );
-      // create new text node with the output text
-      var newTextNode = document.createTextNode( outputText );
-      // append text node to list item
-      newListItem.appendChild( newTextNode );
-      // append new list item to existing ul
-      $( '#carsList' ).append( newListItem );
+      // add a link to remove the car
+      var removeText = '<a href="#" class="removeCar" carIndex=' + i + '>Remove</a>';
+      // append new list item to existing ul with remove link
+      $( '#carsList' ).append( '<li>' + outputText + ' ' + removeText + '</li>' );
     }; // end for
   }; // end showCars
 });
