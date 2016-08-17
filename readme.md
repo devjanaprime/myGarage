@@ -44,6 +44,8 @@ Versions by branch:
 --------------------------
 * builds off of 0.3
 * converted to JQuery
+* 0.51 - remove a car
+* 0.52 - edit existing car (kinda)
 
 0.6 - JQuery/JSON
 ----------------
@@ -54,18 +56,26 @@ Versions by branch:
 ----------------
 * builds off of 0.5
 * SQL CRUD for persistent car data
+* 0.71 - remove a car
+* 0.72 - edit existing car
 
 0.8 - Angular output to DOM
 ---------------------------
 * builds off of 0.3
 * basic project converted to Angular
+* 0.81 - remove a car
+* 0.82 - edit existing car (kinda)
 
 0.9 - Angular/SQL
 -----------------
 * builds off of 0.8
 * SQL CRUD for persistent car data
+* 0.91 - remove a car
+* 0.92 - edit existing car
 
 1.0 - Angular/Mongo
 -------------------
 * builds off of 0.8
 * Mongo CRUD for persistent car data
+* 0.91 - remove a car
+* 0.92 - edit existing car
