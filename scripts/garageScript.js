@@ -25,13 +25,6 @@ var addCar = function( year, make, model, picURL, description ){
   document.getElementById( 'descriptionIn' ).value='';
 }; // end addCar
 
-var removeCar = function( carIndex ){
-  console.log( 'in removeCar:', carIndex );
-  console.log( 'removing car:', myCars[ carIndex ]);
-  // splice out record of this index from the array
-  myCars.splice(carIndex, 1);
-  showCars();
-}; // end removeCar
 
 var showCars = function(){
   console.log( 'in showCars');
@@ -46,10 +39,8 @@ var showCars = function(){
     var outputText1 = '<img src="' + myCars[ i ].picURL + '">';
     // assemble an output text line for the description
     var outputText2 = '<p>' + myCars[ i ].description + '<p>';
-    // button to remove the current car from the myCars array
-    var removeButton = '<button onClick="removeCar( ' + i + ' )";>Remove this car from the Garage</button>';
     // append these all to the body
-    var outputText = '<div>' + outputText0 + removeButton + '<br />' + outputText1 + outputText2 + '</div>';
+    var outputText = '<div>' + outputText0 + outputText1 + outputText2 + '</div>';
     document.getElementById('carsList').innerHTML+=outputText;
   }; // end for
 
