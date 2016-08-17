@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>My Garage</title>
+    <script src="vendors/jQuery/jquery-3.0.0.min.js" charset="utf-8"></script>
     <script src="scripts/garageScript.js" charset="utf-8"></script>
     <link rel="stylesheet" href="css/styles.css" media="screen" title="no title" charset="utf-8">
   </head>
@@ -13,6 +14,7 @@
       <input type="text" id="yearIn" value="" placeholder="Year">
       <input type="text" id="makeIn" value="" placeholder="Make">
       <input type="text" id="modelIn" value="" placeholder="Model"><br />
+<<<<<<< HEAD
       <input type="text" id="picURLIn" value="" placeholder="pic URL" size="65"><br />
       <textarea id="descriptionIn" value="" placeholder="Description" rows="3" cols="63"></textarea><br />
       <button type="button" name="button" onclick="addCar();">Park this car in my garage!</button>
@@ -20,5 +22,18 @@
     <p>Cars in the garage:</p>
     <div id='carsList'>
     </div>
+=======
+      <input type="text" id="yearIn" value="" placeholder="Year"><br />
+      <input type="text" id="picURLIn" value="" placeholder="pic URL"><br />
+      <input type="text" id="descriptionIn" value="" placeholder="Description"><br />
+      <button type="button" id="addCarButton">Add Car</button>
+    </div>
+    <p>Cars in the garage:</p>
+    <ul id='carsList'>
+      <li>
+        <a href='#' class='removeCar'>Remove</a>
+      </li>
+    </ul>
+>>>>>>> ver0.51_JQueryRemoveCar
   </body>
 </html>
