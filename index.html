@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>My Garage</title>
+    <script src="vendors/jQuery/jquery-3.0.0.min.js" charset="utf-8"></script>
     <script src="scripts/garageScript.js" charset="utf-8"></script>
     <link rel="stylesheet" href="css/styles.css" media="screen" title="no title" charset="utf-8">
   </head>
@@ -15,7 +16,7 @@
       <input type="text" id="yearIn" value="" placeholder="Year"><br />
       <input type="text" id="picURLIn" value="" placeholder="pic URL"><br />
       <input type="text" id="descriptionIn" value="" placeholder="Description"><br />
-      <button type="button" name="button" onclick="addCar();">Add Car</button>
+      <button type="button" id="addCarButton">Add Car</button>
     </div>
     <p>Cars in the garage:</p>
     <ul id='carsList'>
