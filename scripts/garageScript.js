@@ -100,8 +100,25 @@ $( document ).ready( function(){
     showCars();
   }); // end addCarButton click
 
+  // click for all of 'editCar' class
+  $( document ).on('click', '.editCar', function(){
+    console.log( 'in editCar class click' );
+    // get index of selected car
+    var index = $(this).attr( 'carIndex' );
+    console.log( 'editing car:', myCars[ index ]);
+    // set inputs to this car's info
+    $( '#yearIn' ).val( myCars[ index ].year );
+    $( '#makeIn' ).val( myCars[ index ].make );
+    $( '#modelIn' ).val( myCars[ index ].model );
+    $( '#picURLIn' ).val( myCars[ index ].picURL );
+    $( '#descriptionIn' ).val( myCars[ index ].description );
+    // remove from array
+    myCars.splice( index, 1 );
+    showCars();
+  });
+
   // click for all of 'removeCar' class
-  $(document).on('click', '.removeCar', function(){
+  $( document ).on('click', '.removeCar', function(){
     console.log( 'in removeCar class click' );
     // get index of selected car
     var index = $(this).attr( 'carIndex' );
@@ -122,8 +139,10 @@ $( document ).ready( function(){
       var outputText = myCars[ i ].year + ' ' + myCars[ i ].make + ' ' + myCars[ i ].model + ': ' + myCars[ i ].description;
       // add a link to remove the car
       var removeText = '<a href="#" class="removeCar" carIndex=' + i + '>Remove</a>';
+      // add a link to edit the car
+      var editText = '<a href="#" class="editCar" carIndex=' + i + '>Edit</a>';
       // append new list item to existing ul with remove link
-      $( '#carsList' ).append( '<li>' + outputText + ' ' + removeText + '</li>' );
+      $( '#carsList' ).append( '<li>' + outputText + ' ' + editText + ' ' + removeText + '</li>' );
     }; // end for
   }; // end showCars
 });
