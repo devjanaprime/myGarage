@@ -1,18 +1,10 @@
 My Garage
 =========
 
-A rolling project that will use many basic technologies (JS, JQuery, AngularJS, SQL, Mongo) that is broken into many branches. We'll create an Array "myCars" which can hold many car Objects.
+A rolling project that uses many basic technologies: JS, JQuery, AngularJS, SQL, Mongo. We'll create an Array "myCars" which can hold many car Objects.
 
-The Car Object
---------------
-* year
-* make
-* model
-* picURL
-* description
-
-Versions by branch:
-==================
+Versions/features by branch:
+============================
 ![technologies by version](myGarage.png)
 
 0.1 - console only
@@ -79,3 +71,11 @@ Versions by branch:
 * Mongo CRUD for persistent car data
 * 0.91 - remove a car
 * 0.92 - edit existing car
+
+The Car Object
+--------------
+* year
+* make
+* model
+* picURL
+* description
