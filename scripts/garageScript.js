@@ -12,14 +12,20 @@ $( document ).ready( function(){
     console.log( 'in addCarButton click');
     // create new car Object
     var newCar={
-      year: document.getElementById( 'yearIn' ).value,
-      make: document.getElementById( 'makeIn' ).value,
-      model: document.getElementById( 'modelIn' ).value,
-      picURL: document.getElementById( 'picURLIn' ).value,
-      description: document.getElementById( 'descriptionIn' ).value
+      year: $( '#yearIn' ).val(),
+      make: $( '#makeIn' ).val(),
+      model: $( '#modelIn' ).val(),
+      picURL: $( '#picURLIn' ).val(),
+      description: $( '#descriptionIn' ).val()
     }; // end new car object
     // push into array
     myCars.push( newCar );
+    // empty inputs
+    $( '#yearIn' ).val(''),
+    $( '#makeIn' ).val(''),
+    $( '#modelIn' ).val(''),
+    $( '#picURLIn' ).val(''),
+    $( '#descriptionIn' ).val('')
     // show cars
     showCars();
   }); // end addCarButton click
