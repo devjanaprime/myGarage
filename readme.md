@@ -37,7 +37,8 @@ Versions by branch:
 -------------------------------------
 * builds off of 0.3
 * some basic styling so things aren't so ugly...
-* remove a car from the myCars array
+* 0.41 - remove a car from the myCars array
+* 0.42 - edit existing car (kinda)
 
 0.5 - JQuery output to DOM
 --------------------------
