@@ -1,7 +1,6 @@
 console.log( 'garageScript.js sourced' );
 // myCars array
 var myCars=[];
-
 // converted to JQuery from ver 0.3 of My Garage
 
 $( document ).ready( function(){
@@ -46,6 +45,25 @@ $( document ).ready( function(){
     myCars.splice( index, 1 );
     showCars();
   });
+
+  var getCarsFromJSON = function(){
+    console.log( 'in getCarsFromJSON' );
+    // ajax call to get the cars from JSON file
+    $.ajax({
+      dataType: "json",
+      url: 'http://devjana.net/support/cars.json',
+      success: function( data ){
+        console.log( 'in ajax success:', data );
+        // add json cars to the myCars array
+        for( var i=0; i< data.cars.length; i++ ){
+          myCars.push( data.cars[ i ] );
+        }; // end for
+        showCars();
+      } // end success
+    }); // end ajax
+  } // end getCarsFromJSON
+
+  getCarsFromJSON();
 
   // click for all of 'removeCar' class
   $( document ).on('click', '.removeCar', function(){

@@ -1,0 +1,39 @@
+{
+  "cars": [
+    {
+      "year": "1974",
+      "make": "Volkwagon",
+      "model": "Super Beetle",
+      "picURL": "https://upload.wikimedia.org/wikipedia/commons/2/2d/1973-1974_Volkswagen_%221303_Big%22,_Istanbul.jpg",
+      "description": "The VW Beetle has undergone many facelifts recently, but the classic designs of the 1960's and 70's are still the standard. The late 60's had a great line to them, but the early 70's Beetles added some nice round edges and many are still running. THey retail anywhere from $12,000 to $60,000 depending on condition, but parts are abundantly available."
+    },
+    {
+      "year": "1969",
+      "make": "Corvette",
+      "model": "Stingray",
+      "picURL": "http://cdn.pinthiscars.com/images/chevrolet-corvette-stingray-1969-wallpaper-6.jpg",
+      "description":"Perhaps the best looking automotive vehicle ever crafted, the 69 Stingray is the second best thing to come out of 1969 after Hendrix's Star Spangled Banner performance at Woodstock. Depending on mileage and condition they typically range from $25,000-$50,000."
+    },
+    {
+      "year": "2003",
+      "make": "Chrysler",
+      "model": "PT Cruiser",
+      "picURL": "http://roa.h-cdn.co/assets/cm/14/47/546b527e974d4_-_2003-chrysler-pt-cruiser-turbo-lg.jpg",
+      "description": "OK, I know this is a weird choice, but I love this car. You can take the back seats out and fit a ton of stuff in there. THe mileage is solid and you cna park it anywhere. Also, you don't have to worry about anyone stealing it."
+    },
+    {
+      "year": "2013",
+      "make": "Lamborghini",
+      "model": "Egoista",
+      "picURL": "http://blog.caranddriver.com/wp-content/uploads/2013/05/lamborghini_egoista_three_quarter_front_view.jpg",
+      "description": "Egoista means SELFISH in Italian and this 50th anniversay vehicle for Lamborghini is all about the driver. The Egoista has a unique one-seat cockpit, which is similar to that of a modern fighter jet, and has a canopy door that is completely removable. The steering wheel must be removed to enter and exit the vehicle. It retails for about 4 Million USD."
+    },
+    {
+      "year": "2016",
+      "make": "Lotus",
+      "model": "Elise",
+      "picURL": "http://www.lotuscars.com/sites/default/files/Elise-Cup-R-23_06_14_24_1000.png",
+      "description": "Every time I see a Lotus on the street I have to reach for a napkin to wipe the drool off of my chin. They have a presence that is not conveyed in pictures and the Elise Sport starts as los as $35,000 USD. "
+    }
+  ]
+}
