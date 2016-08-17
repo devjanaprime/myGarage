@@ -3,8 +3,8 @@ My Garage
 
 A rolling project that uses many basic technologies: JS, JQuery, AngularJS, SQL, Mongo. We'll create an Array "myCars" which can hold many car Objects.
 
-Versions/features by branch:
-============================
+Versions/technologies (all numbered items have their own branch):
+=================================================================
 ![technologies by version](myGarage.png)
 
 0.1 - console only
