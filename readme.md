@@ -5,7 +5,7 @@ A rolling project that uses many basic technologies: JS, JQuery, AngularJS, SQL,
 
 Versions/technologies:
 =================================================================
-![technologies by version](myGarage.png)
+![technologies by version](myGarage02.png)
 
 all numbered items have their own branch in the following
 
