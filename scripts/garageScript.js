@@ -25,6 +25,21 @@ var addCar = function( year, make, model, picURL, description ){
   document.getElementById( 'descriptionIn' ).value='';
 }; // end addCar
 
+var editCar = function( carIndex ){
+  console.log( 'in console:', carIndex );
+  console.log( 'editing car:', myCars[ carIndex ] );
+  // we're going to cheat here a bit
+  // step 1: place the entry's 411 in the input fields
+  document.getElementById( 'yearIn' ).value = myCars[ carIndex ].year;
+  document.getElementById( 'makeIn' ).value = myCars[ carIndex ].make;
+  document.getElementById( 'modelIn' ).value = myCars[ carIndex ].model;
+  document.getElementById( 'picURLIn' ).value = myCars[ carIndex ].picURL;
+  document.getElementById( 'descriptionIn' ).value = myCars[ carIndex ].description;
+  // step 2: remove the car from the array
+  removeCar( carIndex );
+  // a POC work-around that will fake being able to edit
+}; // end editCar
+
 var removeCar = function( carIndex ){
   console.log( 'in removeCar:', carIndex );
   console.log( 'removing car:', myCars[ carIndex ]);
@@ -48,8 +63,10 @@ var showCars = function(){
     var outputText2 = '<p>' + myCars[ i ].description + '<p>';
     // button to remove the current car from the myCars array
     var removeButton = '<button onClick="removeCar( ' + i + ' )";>Remove this car from the Garage</button>';
+    // button to edit the current car
+    var editButton = '<button onClick="editCar( ' + i + ' )";>Edit this car</button>';
     // append these all to the body
-    var outputText = '<div>' + outputText0 + removeButton + '<br />' + outputText1 + outputText2 + '</div>';
+    var outputText = '<div>' + outputText0 + editButton + removeButton + '<br />' + outputText1 + outputText2 + '</div>';
     document.getElementById('carsList').innerHTML+=outputText;
   }; // end for
 
