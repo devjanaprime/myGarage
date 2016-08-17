@@ -33,10 +33,11 @@ Versions by branch:
 * builds off of 0.2
 * uses vanilla JS for DOM output
 
-0.4 - Bootstrap styling
------------------------
+0.4 - Basic styling and interactivity
+-------------------------------------
 * builds off of 0.3
-* uses Bootstrap for styling
+* some basic styling so things aren't so ugly...
+* remove a car from the myCars array
 
 0.5 - JQuery output to DOM
 --------------------------
