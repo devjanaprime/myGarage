@@ -18,6 +18,22 @@ $( document ).ready( function(){
       picURL: $( '#picURLIn' ).val(),
       description: $( '#descriptionIn' ).val()
     }; // end new car object
+    // send object to server to save to database
+    $.ajax({
+      url : "/addCar",
+      type: "POST",
+      data : newCar,
+      success: function( data )
+      {
+        //data - response from server
+        console.log( data );
+      },
+      error: function()
+      {
+        // problem with AJAX POST
+        console.log( 'error with AJAX POST' );
+      }
+    });
     // push into array
     myCars.push( newCar );
     // empty inputs

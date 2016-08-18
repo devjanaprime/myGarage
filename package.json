@@ -1,0 +1,26 @@
+{
+  "name": "my_garage",
+  "version": "0.7.0",
+  "description": "JQuery SQL update of My Garage project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devjanaprime/myGarage.git"
+  },
+  "author": "@devjana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devjanaprime/myGarage/issues"
+  },
+  "homepage": "https://github.com/devjanaprime/myGarage#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "path": "^0.12.7",
+    "pg": "^6.1.0"
+  }
+}
