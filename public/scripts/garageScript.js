@@ -18,6 +18,22 @@ $( document ).ready( function(){
       picURL: $( '#picURLIn' ).val(),
       description: $( '#descriptionIn' ).val()
     }; // end new car object
+    // send object to server to save to database
+    $.ajax({
+      url : "/addCar",
+      type: "POST",
+      data : newCar,
+      success: function( data )
+      {
+        //get cars from DB
+        getCars();
+      },
+      error: function()
+      {
+        // problem with AJAX POST
+        console.log( 'error with AJAX POST' );
+      }
+    });
     // push into array
     myCars.push( newCar );
     // empty inputs
@@ -47,18 +63,47 @@ $( document ).ready( function(){
     showCars();
   });
 
+  var getCars =function(){
+    console.log( 'in getCars' );
+    $.ajax({
+      url:'/getCars',
+      type: 'GET',
+      success: function( data ){
+        console.log( 'success reading cars from DB:', data );
+        // push data back into the myCars array
+        myCars=data;
+        // show cars
+        showCars();
+      },
+      error: function(){
+        console.log( 'error reading cars from DB');
+      }
+    });
+  };
+
   // click for all of 'removeCar' class
   $( document ).on('click', '.removeCar', function(){
     console.log( 'in removeCar class click' );
     // get index of selected car
     var index = $(this).attr( 'carIndex' );
     console.log( 'removing car:', myCars[ index ]);
-    myCars.splice( index, 1 );
-    showCars();
+    // call to server and tell it to remove this car
+    $.ajax({
+      url: '/removeCar',
+      type: 'DELETE',
+      data: myCars[ index ],
+      success: function( data ){
+        console.log( 'successfully removed car' );
+        getCars();
+      },
+      error: function(){
+        console.log( 'error removing car from DB' );
+      } // end error
+    });
   });
 
   var showCars = function(){
-    console.log( 'in showCars');
+    console.log( 'in showCars', myCars );
     // upated from ver 0.2 to output an unordered list of cars in garage to DOM
     // not just a cheesy console.log...
     // empty the ul
@@ -75,4 +120,6 @@ $( document ).ready( function(){
       $( '#carsList' ).append( '<li>' + outputText + ' ' + editText + ' ' + removeText + '</li>' );
     }; // end for
   }; // end showCars
+  // get cars on page load
+  getCars();
 });
