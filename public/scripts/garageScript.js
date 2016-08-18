@@ -25,8 +25,8 @@ $( document ).ready( function(){
       data : newCar,
       success: function( data )
       {
-        //data - response from server
-        console.log( data );
+        //get cars from DB
+        getCars();
       },
       error: function()
       {
@@ -63,6 +63,24 @@ $( document ).ready( function(){
     showCars();
   });
 
+  var getCars =function(){
+    console.log( 'in getCars' );
+    $.ajax({
+      url:'/getCars',
+      type: 'GET',
+      success: function( data ){
+        console.log( 'success reading cars from DB:', data );
+        // push data back into the myCars array
+        myCars=data;
+        // show cars
+        showCars();
+      },
+      error: function(){
+        console.log( 'error reading cars from DB');
+      }
+    });
+  };
+
   // click for all of 'removeCar' class
   $( document ).on('click', '.removeCar', function(){
     console.log( 'in removeCar class click' );
@@ -91,4 +109,6 @@ $( document ).ready( function(){
       $( '#carsList' ).append( '<li>' + outputText + ' ' + editText + ' ' + removeText + '</li>' );
     }; // end for
   }; // end showCars
+  // get cars on page load
+  getCars();
 });

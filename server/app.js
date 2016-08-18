@@ -25,6 +25,7 @@ app.get( '/', function( req, res ) {
   res.sendFile( './views/index.html' );
 });
 
+// add a new car to db
 app.post( '/addCar', function( req, res ){
   console.log( 'in addCar:', req.body );
   pg.connect( connectionString, function( err, client, done ) {
@@ -37,5 +38,35 @@ app.post( '/addCar', function( req, res ){
       client.query( 'INSERT INTO cars( year, make, model, picURL, description ) values( $1, $2, $3, $4, $5 )', [ req.body.year, req.body.make, req.body.model, req.body.picURL,  req.body.description ] );
       res.send( true );
     }
+  }); // end connect
+});
+
+// get cars from db
+app.get( '/getCars', function( req, res ){
+  console.log( 'in getCars' );
+  pg.connect( connectionString, function( err, client, done ) {
+    if( err ){
+      // if there was an error log it
+      console.log( err );
+    } // end connection error
+    else{
+      // if no error proceed
+      // get all records from cars table and hold in var named "query"
+      var query = client.query( 'SELECT * from cars' );
+      console.log( 'query results:', query );
+      // an array to hold our results
+      var results = [];
+      query.on( 'row', function( row ) {
+        // push each row into the results array
+        results.push( row );
+      }); // end row
+      // close connection
+      query.on( 'end', function() {
+        // close up shop when at end
+        done();
+        // send back results as a json
+        return res.json( results );
+      }); // end onEnd
+    } // end no connection error
   }); // end connect
 });
