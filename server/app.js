@@ -53,7 +53,6 @@ app.get( '/getCars', function( req, res ){
       // if no error proceed
       // get all records from cars table and hold in var named "query"
       var query = client.query( 'SELECT * from cars' );
-      console.log( 'query results:', query );
       // an array to hold our results
       var results = [];
       query.on( 'row', function( row ) {
