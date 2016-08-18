@@ -49,7 +49,8 @@ all numbered items have their own branch in the following
 0.7 - JQuery/SQL
 ----------------
 * builds off of 0.5
-* SQL CRUD for persistent car data
+* adds Node/Express for server side handling
+* SQL CRUD for persistent car data (notes on db setup are in app.js)
 * 0.71 - remove a car
 * 0.72 - edit existing car
 
