@@ -87,12 +87,23 @@ $( document ).ready( function(){
     // get index of selected car
     var index = $(this).attr( 'carIndex' );
     console.log( 'removing car:', myCars[ index ]);
-    myCars.splice( index, 1 );
-    showCars();
+    // call to server and tell it to remove this car
+    $.ajax({
+      url: '/removeCar',
+      type: 'DELETE',
+      data: myCars[ index ],
+      success: function( data ){
+        console.log( 'successfully removed car' );
+        getCars();
+      },
+      error: function(){
+        console.log( 'error removing car from DB' );
+      } // end error
+    });
   });
 
   var showCars = function(){
-    console.log( 'in showCars');
+    console.log( 'in showCars', myCars );
     // upated from ver 0.2 to output an unordered list of cars in garage to DOM
     // not just a cheesy console.log...
     // empty the ul

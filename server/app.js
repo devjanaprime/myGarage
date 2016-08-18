@@ -69,3 +69,18 @@ app.get( '/getCars', function( req, res ){
     } // end no connection error
   }); // end connect
 });
+
+// removeCar by id
+app.delete( '/removeCar', function( req, res ){
+  console.log( 'in removeCar', req.body );
+  pg.connect( connectionString, function( err, client, done ){
+    if( err ){
+      console.log( err );
+    }
+    else{
+      client.query( 'DELETE FROM cars WHERE id=' + req.body.id );
+      done();
+      res.send( true );
+    } //end no error connecting
+  });
+});
