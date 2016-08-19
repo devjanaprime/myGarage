@@ -1,6 +1,7 @@
 console.log( 'garageScript.js sourced' );
 // myCars array
 var myCars=[];
+var editMode = false;
 
 // converted to JQuery from ver 0.3 of My Garage
 
@@ -12,38 +13,50 @@ $( document ).ready( function(){
     console.log( 'in addCarButton click');
     // create new car Object
     var newCar={
+      id: $( '#carIdIn' ).val(),
       year: $( '#yearIn' ).val(),
       make: $( '#makeIn' ).val(),
       model: $( '#modelIn' ).val(),
-      picURL: $( '#picURLIn' ).val(),
+      picurl: $( '#picURLIn' ).val(),
       description: $( '#descriptionIn' ).val()
     }; // end new car object
-    // send object to server to save to database
-    $.ajax({
-      url : "/addCar",
-      type: "POST",
-      data : newCar,
-      success: function( data )
-      {
-        //get cars from DB
-        getCars();
-      },
-      error: function()
-      {
-        // problem with AJAX POST
-        console.log( 'error with AJAX POST' );
-      }
-    });
-    // push into array
-    myCars.push( newCar );
+    // edit mode?
+    if( editMode ){
+      var ajaxURL = '/editCar';
+      var ajaxType = 'PUT';
+    }
+    else{
+      ajaxURL = '/addCar';
+      ajaxType = 'POST';
+    }
+
+      // new car
+      $.ajax({
+        url : ajaxURL,
+        type: ajaxType,
+        data : newCar,
+        success: function( data )
+        {
+          //get cars from DB
+          getCars();
+        },
+        error: function()
+        {
+          // problem with AJAX POST
+          console.log( 'error with AJAX POST' );
+        }
+      });
     // empty inputs
-    $( '#yearIn' ).val(''),
-    $( '#makeIn' ).val(''),
-    $( '#modelIn' ).val(''),
-    $( '#picURLIn' ).val(''),
-    $( '#descriptionIn' ).val('')
+    $( '#carIdIn' ).val('');
+    $( '#yearIn' ).val('');
+    $( '#makeIn' ).val('');
+    $( '#modelIn' ).val('');
+    $( '#picURLIn' ).val('');
+    $( '#descriptionIn' ).val('');
     // show cars
     showCars();
+    // clear editMode
+    editMode=false;
   }); // end addCarButton click
 
   // click for all of 'editCar' class
@@ -53,6 +66,7 @@ $( document ).ready( function(){
     var index = $(this).attr( 'carIndex' );
     console.log( 'editing car:', myCars[ index ]);
     // set inputs to this car's info
+    $( '#carIdIn' ).val( myCars[ index ].id );
     $( '#yearIn' ).val( myCars[ index ].year );
     $( '#makeIn' ).val( myCars[ index ].make );
     $( '#modelIn' ).val( myCars[ index ].model );
@@ -60,6 +74,8 @@ $( document ).ready( function(){
     $( '#descriptionIn' ).val( myCars[ index ].description );
     // remove from array
     myCars.splice( index, 1 );
+    // set edit mode
+    editMode=true;
     showCars();
   });
 
