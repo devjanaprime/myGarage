@@ -84,3 +84,19 @@ app.delete( '/removeCar', function( req, res ){
     } //end no error connecting
   });
 });
+
+app.put( '/editCar', function( req, res ){
+  console.log( 'in editCar:', req.body );
+  pg.connect( connectionString, function( err, client, done ){
+    if( err ){
+      console.log( err );
+    } // error!
+    else{
+      var newQuery = "UPDATE cars SET year='" + req.body.year + "', make='" + req.body.make + "', model='" + req.body.model + "', description='" + req.body.description + "' WHERE id='" + req.body.id + "'";
+      console.log( newQuery );
+      client.query( newQuery );
+      done();
+      res.send( true );
+    } // no error
+  }); // end pg connect
+});
