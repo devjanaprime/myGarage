@@ -35,7 +35,7 @@ app.post( '/addCar', function( req, res ){
     }
     else{
       // if no error proceed
-      client.query( 'INSERT INTO cars( year, make, model, picURL, description ) values( $1, $2, $3, $4, $5 )', [ req.body.year, req.body.make, req.body.model, req.body.picURL,  req.body.description ] );
+      client.query( 'INSERT INTO cars( year, make, model, picurl, description ) values( $1, $2, $3, $4, $5 )', [ req.body.year, req.body.make, req.body.model, req.body.picurl,  req.body.description ] );
       res.send( true );
     }
   }); // end connect
@@ -92,7 +92,7 @@ app.put( '/editCar', function( req, res ){
       console.log( err );
     } // error!
     else{
-      var newQuery = "UPDATE cars SET year='" + req.body.year + "', make='" + req.body.make + "', model='" + req.body.model + "', description='" + req.body.description + "' WHERE id='" + req.body.id + "'";
+      var newQuery = "UPDATE cars SET year='" + req.body.year + "', make='" + req.body.make + "', model='" + req.body.model + "', picurl='" + req.body.picurl + "', description='" + req.body.description + "' WHERE id='" + req.body.id + "'";
       console.log( newQuery );
       client.query( newQuery );
       done();

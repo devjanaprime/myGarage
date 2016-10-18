@@ -1,4 +1,5 @@
-console.log( 'garageScript.js sourced' );
+var verbose = true;
+if( verbose ) console.log( 'garageScript.js sourced' );
 // myCars array
 var myCars=[];
 var editMode = false;
@@ -6,13 +7,13 @@ var editMode = false;
 // converted to JQuery from ver 0.3 of My Garage
 
 $( document ).ready( function(){
-  console.log( 'in JQUERY' );
+  if( verbose ) console.log( 'in JQUERY' );
 
   // target the addCarButton by it's ID (thus the #)
   $( '#addCarButton' ).on( 'click', function(){
-    console.log( 'in addCarButton click');
+    if( verbose ) console.log( 'in addCarButton click');
     // create new car Object
-    var newCar={
+    var newCar = {
       id: $( '#carIdIn' ).val(),
       year: $( '#yearIn' ).val(),
       make: $( '#makeIn' ).val(),
@@ -20,12 +21,15 @@ $( document ).ready( function(){
       picurl: $( '#picURLIn' ).val(),
       description: $( '#descriptionIn' ).val()
     }; // end new car object
+    if( verbose ) console.log( 'newCar Object:', newCar );
     // edit mode?
     if( editMode ){
+      if( verbose ) console.log( 'edit mode, using PUT' );
       var ajaxURL = '/editCar';
       var ajaxType = 'PUT';
     }
     else{
+      if( verbose ) console.log( '!edit mode, using POST' );
       ajaxURL = '/addCar';
       ajaxType = 'POST';
     }
@@ -37,13 +41,14 @@ $( document ).ready( function(){
         data : newCar,
         success: function( data )
         {
+          if( verbose ) console.log( 'AJAX', ajaxType, 'success:', data );
           //get cars from DB
           getCars();
         },
         error: function()
         {
           // problem with AJAX POST
-          console.log( 'error with AJAX POST' );
+          if( verbose ) console.log( 'error with AJAX', ajaxType );
         }
       });
     // empty inputs
@@ -61,16 +66,16 @@ $( document ).ready( function(){
 
   // click for all of 'editCar' class
   $( document ).on('click', '.editCar', function(){
-    console.log( 'in editCar class click' );
+    if( verbose ) console.log( 'in editCar class click' );
     // get index of selected car
     var index = $(this).attr( 'carIndex' );
-    console.log( 'editing car:', myCars[ index ]);
+    if( verbose ) console.log( 'editing car:', myCars[ index ]);
     // set inputs to this car's info
     $( '#carIdIn' ).val( myCars[ index ].id );
     $( '#yearIn' ).val( myCars[ index ].year );
     $( '#makeIn' ).val( myCars[ index ].make );
     $( '#modelIn' ).val( myCars[ index ].model );
-    $( '#picURLIn' ).val( myCars[ index ].picURL );
+    $( '#picURLIn' ).val( myCars[ index ].picurl );
     $( '#descriptionIn' ).val( myCars[ index ].description );
     // remove from array
     myCars.splice( index, 1 );
@@ -119,7 +124,7 @@ $( document ).ready( function(){
   });
 
   var showCars = function(){
-    console.log( 'in showCars', myCars );
+    if( verbose ) console.log( 'in showCars', myCars );
     // upated from ver 0.2 to output an unordered list of cars in garage to DOM
     // not just a cheesy console.log...
     // empty the ul
@@ -129,11 +134,13 @@ $( document ).ready( function(){
       // assemble an output text line
       var outputText = myCars[ i ].year + ' ' + myCars[ i ].make + ' ' + myCars[ i ].model + ': ' + myCars[ i ].description;
       // add a link to remove the car
+      var imageText = '<img src="' + myCars[ i ].picurl + '">';
+      // add a link to remove the car
       var removeText = '<a href="#" class="removeCar" carIndex=' + i + '>Remove</a>';
       // add a link to edit the car
       var editText = '<a href="#" class="editCar" carIndex=' + i + '>Edit</a>';
       // append new list item to existing ul with remove link
-      $( '#carsList' ).append( '<li>' + outputText + ' ' + editText + ' ' + removeText + '</li>' );
+      $( '#carsList' ).append( '<li>' + outputText + ' ' + imageText + ' ' + editText + ' ' + removeText + '</li>' );
     }; // end for
   }; // end showCars
   // get cars on page load
